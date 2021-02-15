@@ -5,7 +5,7 @@
     android:id="@+id/mainDetailsLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@android:drawable/screen_background_dark_transparent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/ablMovieDetails"
@@ -45,14 +45,14 @@
 
                 <TextView
                     android:id="@+id/ctlImageBackdropTitle"
-                    tools:text="Movie title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
+                    android:layout_alignBottom="@id/ctlImageBackdrop"
                     android:background="@android:drawable/screen_background_dark_transparent"
-                    android:textColor="@color/white"
                     android:ellipsize="end"
-                    android:layout_alignBottom="@id/ctlImageBackdrop"/>
+                    android:padding="10dp"
+                    android:textColor="@color/white"
+                    tools:text="Movie title" />
             </RelativeLayout>
 
             <Toolbar
@@ -60,7 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>

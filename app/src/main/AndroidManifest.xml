@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieApi">
         <activity android:name=".movie_details.DetailsActivity" android:theme="@style/Theme.MovieApi.NoActionBar"/>
-        <activity android:name=".filter_activity.FilterActivity" />
+        <activity android:name=".filter_activity.FilterActivity" android:label="Filter"/>
         <activity android:name=".movie_list.MovieListActivity"
             android:configChanges="orientation|screenSize|keyboardHidden" >
             <intent-filter>

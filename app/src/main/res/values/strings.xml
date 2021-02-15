@@ -5,7 +5,7 @@
     <string name="to">To</string>
     <string name="ok">OK</string>
     <string name="filterquery">FilterQuery</string>
-    <string name="reset_filters">Reset Filters</string>
+    <string name="reset_filters">Reset</string>
     <string name="poster">Poster</string>
     <string name="owerview">Owerview</string>
     <string name="top_buld_cast">Top Buld Cast</string>
@@ -14,4 +14,5 @@
     <string name="tagline">Tagline</string>
     <string name="runtime">Runtime</string>
     <string name="cast_poster">Cast Poster</string>
+    <string name="apply_filters">Apply</string>
 </resources>

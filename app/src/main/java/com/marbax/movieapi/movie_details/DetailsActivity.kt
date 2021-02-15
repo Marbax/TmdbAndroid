@@ -1,6 +1,8 @@
 package com.marbax.movieapi.movie_details
 
+import android.content.Intent
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -22,13 +24,14 @@ import com.marbax.movieapi.movie_list.MovieListActivity
 import com.marbax.movieapi.network.ApiClient
 import kotlinx.android.synthetic.main.activity_details.*
 import kotlinx.android.synthetic.main.content_details.*
-import kotlinx.android.synthetic.main.movie_card.*
+
 
 class DetailsActivity : AppCompatActivity(), DetailsContract.View {
 
     private val presenter = MoviePresenter(this)
 
     private var movieTitle = ""
+    private var movieHomepage = ""
     private lateinit var castAdapter: CastAdapter
     private val castList = mutableListOf<Cast>()
 
@@ -41,6 +44,11 @@ class DetailsActivity : AppCompatActivity(), DetailsContract.View {
         castAdapter = CastAdapter(castList)
         rv_cast.adapter = castAdapter
         presenter.getMovie(id)
+        tv_homepage_value.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(movieHomepage)
+            startActivity(intent)
+        }
     }
 
     private fun initToolbar() {
@@ -51,7 +59,7 @@ class DetailsActivity : AppCompatActivity(), DetailsContract.View {
             var isShown = false
             var scrollRange = -1
             override fun onOffsetChanged(appBarLayout: AppBarLayout?, verticalOffset: Int) {
-                if (scrollRange ==-1) {
+                if (scrollRange == -1) {
                     appBarLayout?.totalScrollRange?.apply {
                         scrollRange = appBarLayout.totalScrollRange
                     }
@@ -111,11 +119,12 @@ class DetailsActivity : AppCompatActivity(), DetailsContract.View {
 
     override fun showMovieDetails(movie: Movie) {
         movieTitle = movie.title
+        movieHomepage = movie.homepage
         ctlImageBackdropTitle.text = movieTitle
         tv_release_date.text = movie.release_date
         tv_movie_ratings.text = movie.vote_average.toString()
         tv_movie_overview.text = movie.overview
-        tv_homepage_value.text = movie.homepage
+        tv_homepage_value.text = movieHomepage
         tv_tagline_value.text = movie.tagline
         tv_runtime_value.text = movie.runtime
         initPoster(movie.poster_path)

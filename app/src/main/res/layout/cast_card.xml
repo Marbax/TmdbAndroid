@@ -6,8 +6,8 @@
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="100dp"
+        android:layout_height="160dp"
         android:layout_gravity="center"
         android:layout_margin="5dp"
         android:elevation="3dp"
@@ -16,17 +16,18 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:background="@android:drawable/screen_background_dark_transparent"
             android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/ivCastPoster"
-                android:layout_width="0dp"
-                android:maxWidth="150dp"
-                android:layout_height="140dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:contentDescription="@string/cast_poster"
-                android:scaleType="fitCenter"
+                android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                android:background="@android:drawable/screen_background_dark_transparent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,24 +42,27 @@
 
             <TextView
                 android:id="@+id/tvCastName"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:drawable/screen_background_dark_transparent"
+                android:gravity="center_horizontal"
                 android:padding="2dp"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:text="John Doe" />
 
             <TextView
                 android:id="@+id/tvCharacterName"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
                 android:background="@android:drawable/screen_background_dark_transparent"
+                android:maxLines="2"
                 android:padding="2dp"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Billie Joe" />
 

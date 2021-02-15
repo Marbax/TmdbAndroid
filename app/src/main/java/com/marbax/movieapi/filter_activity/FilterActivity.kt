@@ -47,10 +47,25 @@ class FilterActivity : AppCompatActivity() {
             setResult(RESET_FILTER_CODE, result)
             finish()
         }
+        btnApplyFilters.setOnClickListener {
+            applyFiltersAndClose()
+        }
     }
 
     private fun isFieldsNotEmpty(vararg fields: String): Boolean {
         return fields.all { it.isNotEmpty() }
+    }
+
+    private fun applyFiltersAndClose() {
+        if (isFieldsNotEmpty(dateFrom, dateTo)) {
+            val result = Intent()
+                .putExtra(KEY_DATE_FROM, dateFrom)
+                .putExtra(KEY_DATE_TO, dateTo)
+            setResult(Activity.RESULT_OK, result)
+            finish()
+        } else {
+            Snackbar.make(filterActivityLayout, "Fill all fields", Snackbar.LENGTH_LONG).show()
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -65,15 +80,7 @@ class FilterActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.menuFilterOk) {
-            if (isFieldsNotEmpty(dateFrom, dateTo)) {
-                val result = Intent()
-                    .putExtra(KEY_DATE_FROM, dateFrom)
-                    .putExtra(KEY_DATE_TO, dateTo)
-                setResult(Activity.RESULT_OK, result)
-                finish()
-            } else {
-                Snackbar.make(filterActivityLayout, "Fill all fields", Snackbar.LENGTH_LONG).show()
-            }
+            applyFiltersAndClose()
         }
         return super.onOptionsItemSelected(item)
     }
